@@ -1,0 +1,26 @@
+.add-application-modal {
+    &__logotypes-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        &__logotype-box {
+            width: 104px;
+            height: 104px;
+            display: flex;
+            align-items: center;
+            margin: 4px 6px;
+            border-radius: 9.5px;
+
+            &--selected {
+                box-shadow: 0 0 0 2pt $primary;
+            }
+
+            &>img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+        }
+    }
+}

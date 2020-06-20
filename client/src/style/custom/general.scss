@@ -1,0 +1,29 @@
+.content-header {
+  padding: 25px 1.5rem;
+}
+
+.page-title {
+  color: black;
+  font-weight: 600;
+}
+
+.content-wrapper {
+  background: #F8F8FB;
+  
+  &>.content {
+    padding: 0 1.5rem;
+  }
+}
+
+.brand-link {
+  background: $primary;
+}
+  
+.card {
+  border-radius: .25rem !important;
+}
+  
+.card-body {
+  border-radius: 10px;
+}
+

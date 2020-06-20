@@ -1,0 +1,22 @@
+.login-page, .register-page {
+    background: $dark;
+
+    .brand-image-login {
+        width: 50px;
+        margin-bottom: 20px;
+
+    }
+}
+
+.login-card-body, .register-card-body {
+
+    .linkedin-button {
+        background: #0e76a8;
+        border-color: #0e76a8;
+    }
+
+    label:not(.form-check-label):not(.custom-file-label) {
+        font-weight: normal;
+    }
+}
+

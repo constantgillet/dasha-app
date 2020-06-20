@@ -1,0 +1,20 @@
+.application-content-header__logotype {
+    margin-left: 20px;
+    height: 45px;
+    margin-top: -5px;
+    vertical-align: middle;
+    border-style: none;
+    border-radius: 8px;
+}
+
+.application-content-header__title:first-letter {
+    text-transform: uppercase;
+}
+
+.application-content-header__campain-name:first-letter {
+    text-transform: uppercase;
+}
+
+.application-content-header__application-name:first-letter {
+    text-transform: uppercase;
+}

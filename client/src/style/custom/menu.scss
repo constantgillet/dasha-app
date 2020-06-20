@@ -1,0 +1,14 @@
+.nav-sidebar>.nav-item {
+    // margin-bottom: 0;
+    // margin-top: 27px;
+    margin-top: 27px;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link{
+    // padding: 1rem 1rem;
+
+    &.active {
+        color: $primary;
+        background: $light;
+    }
+}
