@@ -8,8 +8,6 @@ import App from './js/components/App'
 import './js/plugins/jquery-ui/jquery-ui'
 $.widget.bridge('uibutton', $.ui.button)
 
-import './js/plugins/adminlte.js'
-
 ReactDOM.render(
     <BrowserRouter>
         <App />

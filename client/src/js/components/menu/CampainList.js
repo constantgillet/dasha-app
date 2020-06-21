@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import { CampainContext } from '../CampainsContext';
+import { CampainContext } from '../CampainsContext'
+import '../../plugins/adminlte.js'
+import { Link } from 'react-router-dom'
 
 export class CampainList extends Component {
     constructor(props){
         super(props)
     }
 
-    componentDidUpdate() {
-        console.log($)
+    componentDidMount() {
+        const trees = $('[data-widget="treeview"]')
+        trees.Treeview('init') 
     }
 
     
@@ -19,10 +22,11 @@ export class CampainList extends Component {
                         value => value.campains.map((campain, index) => {
                             return (
                                 <li className="nav-item" key={index}>
-                                    <a href="/campainPage" className="nav-link">
-                                        <i className="far fa-circle nav-icon" />
+                                    <Link className="nav-link"to={`/campain/${campain.id}`}>
+                                        <i className="far fa-circle fa-lg mr-2" />
+
                                         <p>{campain.name}</p>
-                                    </a>
+                                    </Link>
                                 </li>
                             )
                         })
