@@ -1,6 +1,6 @@
 # Application Dashboard
 
-This project is an application dashbord. The goal is to manage your applications when you are searching job. 
+This project is an application dashboard. The goal is to manage your applications when you are searching job. 
 
 ## Libraries used
 
