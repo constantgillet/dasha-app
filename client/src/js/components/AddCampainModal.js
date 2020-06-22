@@ -28,7 +28,6 @@ export class AddCampainModal extends Component {
     addCampain = () => {
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token: Profile.token, campainName: this.state.campainName })
         }
 

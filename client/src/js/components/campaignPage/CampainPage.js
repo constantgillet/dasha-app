@@ -25,6 +25,12 @@ export class IndexPage extends Component {
         this.getApplications()
     }
 
+    //If we change the props (the url)
+    componentWillReceiveProps(nextProps) {
+        this.campainId = nextProps.match.params.id
+        this.getApplications()
+    }
+
     getApplications = () => {
         fetch(`${PROXY_URL}/api/getApplicationsList.php?campain=${this.campainId}&token=${Profile.token}`)
         .then(res => res.json())
