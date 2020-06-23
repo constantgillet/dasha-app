@@ -14,6 +14,7 @@ export class CampainList extends Component {
     }
 
     
+    
     render() {
         return (
             <ul className="nav nav-treeview">
@@ -23,8 +24,6 @@ export class CampainList extends Component {
                             return (
                                 <li className="nav-item" key={index}>
                                     <Link className="nav-link"to={`/campain/${campain.id}`}>
-                                        <i className="far fa-circle fa-lg mr-2" />
-
                                         <p>{campain.name}</p>
                                     </Link>
                                 </li>

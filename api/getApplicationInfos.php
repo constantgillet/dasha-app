@@ -46,8 +46,18 @@
             //We test if the user own the campain
             if($token_data->id == $campain->owner) {
                 
+                $campain_data = [
+                    'id' => $campain->id,
+                    'name' => $campain->name
+                ];
+
+                $application_data = [
+                    'company' => $application->company,
+                    'logotype' => $application->logotype
+                ];
+
                 $response_code = 201;
-                $response = array('status' => 'success', 'campain' => $campain, 'application' => $application);
+                $response = array('status' => 'success', 'campain' => $campain_data, 'application' => $application_data);
                 
             }  else {
                 $response_code = 400;

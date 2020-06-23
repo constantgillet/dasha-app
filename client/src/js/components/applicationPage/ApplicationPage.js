@@ -16,11 +16,9 @@ export class ApplicationPage extends Component {
         this.state = {
             application: {
                 campain: { id: 23, name: 'Campagne stage 2020' },
-                company: 'Facebook',
+                company: 'Nom de la candidature',
                 logotype: 'https://logo.clearbit.com/facebook.com'
             }
-
-            
         }
         this.applicationId = this.props.match.params.id
     }

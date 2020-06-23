@@ -38,12 +38,22 @@ export default class Menu extends Component {
                         {/* Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library */}
                         <li className="nav-item">
-                            <Link to="/" className="nav-link active">
-                                <i className="nav-icon far fa-file" />
-                                <p>
-                                    Dernière campagne
-                                </p>
-                            </Link>
+                            <CampainContext.Consumer>
+                            {
+                
+                                value => {
+                                    return(
+                                        <Link to={`/campain/23`} className="nav-link active">
+                                            <i className="nav-icon far fa-file" />
+                                            <p>
+                                                Dernière campagne
+                                            </p>
+                                        </Link>
+                                    )
+                                }
+                            }
+                                
+                            </CampainContext.Consumer>
                         </li>
                         <li className="nav-item has-treeview">
                             <a href="" className="nav-link">
@@ -65,7 +75,7 @@ export default class Menu extends Component {
                         </li>
                         <li className="nav-item">
                             <Link to="addCampain" className="nav-link" data-toggle="modal" data-target="#modal-add-application-campaign">
-                                <i className="nav-icon far fa-address-card" />
+                                <i className="nav-icon far fa-plus-square" />
                                 <p>
                                     Nouvelle campagne
                                 </p>

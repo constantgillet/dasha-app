@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Header from '../Header'
 import Menu from '../menu/Menu'
 import Footer from '../Footer'
-import ContentHeader from '../ContentHeader'
+import CampainContentHeader from './CampainContentHeader'
 import AddApplicationModal from './AddApplicationModal'
 import AddCampainModal from '../AddCampainModal'
 import CardApplicationsList from './CardApplicationsList'
@@ -53,7 +53,7 @@ export class IndexPage extends Component {
                 <AddCampainModal/>
                 <div className="content-wrapper" style={{minHeight: 823}}>
                     {/* Content Header (Page header) */}
-                    <ContentHeader/>
+                    <CampainContentHeader campainId={this.campainId}/>
                     {/* /.content-header */}
                     {/* Main content */}
                     {/* /.content */}
