@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-//Import boostrap js
-import 'bootstrap/dist/js/bootstrap.min.js'
-
 import CampainPage from './campaignPage/CampainPage'
 import LoginPage from './loginPage/LoginPage'
 import RegisterPage from './registerPage/RegisterPage'
@@ -12,7 +9,6 @@ import ErrorPage from './errorPage/ErrorPage'
 import ApplicationPage from './applicationPage/ApplicationPage'
 import { ProtectedRoute } from './protected.routes'
 
-import 'toastr/build/toastr.min.css'
 import Header from './Header'
 import Menu from './menu/Menu'
 

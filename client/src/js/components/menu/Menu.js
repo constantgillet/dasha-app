@@ -42,14 +42,18 @@ export default class Menu extends Component {
                             {
                 
                                 value => {
-                                    return(
-                                        <Link to={`/campain/23`} className="nav-link active">
-                                            <i className="nav-icon far fa-file" />
-                                            <p>
-                                                Dernière campagne
-                                            </p>
-                                        </Link>
-                                    )
+                                    
+                                    if (value.campains.length > 0) {
+
+                                        return(
+                                            <Link to={`/campain/${value.campains[0].id}`} className="nav-link active" key={value.campains[0].id}>
+                                                <i className="nav-icon far fa-file" />
+                                                <p>
+                                                    Dernière campagne
+                                                </p>
+                                            </Link>
+                                        )
+                                    }
                                 }
                             }
                                 
@@ -64,7 +68,7 @@ export default class Menu extends Component {
                                 <CampainContext.Consumer>
                                 {   
                                     value => {
-                                    return <span className="badge badge-primary right">{value.campains.length}</span>
+                                        return <span className="badge badge-primary right">{value.campains.length}</span>
                                     }
                                     
                                 }

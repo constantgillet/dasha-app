@@ -6,7 +6,7 @@ export default class Footer extends Component {
             <div>
                 {/* /.content-wrapper */}
                 <footer className="main-footer">
-                    <strong>Copyright © 2020 <a href="http://adminlte.io">dasha-app.com</a>. </strong>
+                    <strong>Copyright © 2020 <a href="http://dasha-app.com">dasha-app.com</a>. </strong>
                     All rights reserved.
                     <div className="float-right d-none d-sm-inline-block">
                     <b>Version</b> 0.0.1
