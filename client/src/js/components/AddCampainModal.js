@@ -4,6 +4,7 @@ import toastr from 'toastr'
 import Profile from './Profile'
 import $ from 'jquery'
 import { PROXY_URL } from '../../config'
+import { CampainContext } from './CampainsContext'
 
 export class AddCampainModal extends Component {
     constructor(props) {
@@ -14,9 +15,9 @@ export class AddCampainModal extends Component {
             navicateToCampain: false
         }
     }
-
     onClickAddCampain = () => {
-        
+        console.log(this.context)
+
         if(this.state.campainNameError == null) {
             toastr.success('Félicitations! Vous avez ajouté une campagne')
             this.addCampain()
@@ -37,12 +38,24 @@ export class AddCampainModal extends Component {
             console.log(data)
             if(data.status === 'success') {
                 $('#modal-add-application-campaign').modal('hide')
-                this.setState({navicateToCampain: data.campain_id})
+                this.addCampainToContext({id: data.campain_id, name: this.state.campainName})
+                //this.setState({navicateToCampain: data.campain_id})
             } else {
 
             }
         })
         .catch(err => console.error("Error:", err))
+    }
+
+    addCampainToContext = (newCampain) => {
+        const lastCampainsList = this.context.campains
+        const newCampainsList = [newCampain]
+
+        lastCampainsList.forEach(campain => {
+            newCampainsList.push(campain)
+        })
+
+        this.context.replaceCampains(newCampainsList)
     }
 
     onChangeCampainNameInput = (_event) => {
@@ -62,9 +75,9 @@ export class AddCampainModal extends Component {
     }
 
     render() {
-        if (this.state.navicateToCampain !== false) {
-            return <Redirect to={`/campain/${this.state.navicateToCampain}`} />
-        }
+        // if (this.state.navicateToCampain !== false) {
+        //     return <Redirect to={`/campain/${this.state.navicateToCampain}`} />
+        // }
         return (
             <div className="modal fade" id="modal-add-application-campaign" style={{display: 'none'}} aria-hidden="true">
                 <div className="modal-dialog">
@@ -105,5 +118,7 @@ export class AddCampainModal extends Component {
         )
     }
 }
+
+AddCampainModal.contextType = CampainContext
 
 export default AddCampainModal

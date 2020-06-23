@@ -26,7 +26,7 @@ export default class CampainContentHeader extends Component {
                                 value => value.campains.map((campain, index) => {
                                     if (campain.id == this.state.campainId) {
                                        return (
-                                        <li className="breadcrumb-item header-campain-page__campain-name">{campain.name}</li>     
+                                        <li className="breadcrumb-item header-campain-page__campain-name" key={index}>{campain.name}</li>     
                                         ) 
                                     }
                                 })

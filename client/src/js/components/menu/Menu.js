@@ -46,7 +46,7 @@ export default class Menu extends Component {
                                     if (value.campains.length > 0) {
 
                                         return(
-                                            <Link to={`/campain/${value.campains[0].id}`} className="nav-link active" key={value.campains[0].id}>
+                                            <Link to={`/campain/${value.campains[0].id}`} className="nav-link active">
                                                 <i className="nav-icon far fa-file" />
                                                 <p>
                                                     Dernière campagne

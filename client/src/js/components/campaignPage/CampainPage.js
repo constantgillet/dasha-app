@@ -10,7 +10,7 @@ import CardApplicationsList from './CardApplicationsList'
 import Profile from '../Profile'
 import { PROXY_URL } from '../../../config'
 
-export class IndexPage extends Component {
+export class CampainPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -93,6 +93,6 @@ export class IndexPage extends Component {
     }
 }
 
-export default IndexPage
+export default CampainPage
 
 
