@@ -14,7 +14,6 @@ export class CampainList extends Component {
     }
 
     
-    
     render() {
         return (
             <ul className="nav nav-treeview">

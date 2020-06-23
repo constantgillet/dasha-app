@@ -1,0 +1,7 @@
+.header-campain-page__campain-name {
+    display: block;
+
+    &:first-letter {
+        text-transform: uppercase;
+    }
+} 

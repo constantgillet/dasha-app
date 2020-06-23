@@ -1,3 +1,10 @@
+.main-sidebar {
+
+    .nav-link p:first-letter {
+        text-transform: uppercase;
+    }
+}
+
 .nav-sidebar>.nav-item {
     // margin-bottom: 0;
     // margin-top: 27px;
