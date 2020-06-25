@@ -20,6 +20,9 @@ export class CampainPage extends Component {
         this.campainId = this.props.match.params.id
     }
 
+    componentWillUnmount() {
+        console.log('modal unmount')
+    }
     componentDidMount() {
         document.title = 'Candidatures'
         this.getApplications()
@@ -48,6 +51,8 @@ export class CampainPage extends Component {
     }
 
     render() {
+
+        console.log('campain page render')
         return (
             <div>
                 <AddCampainModal/>

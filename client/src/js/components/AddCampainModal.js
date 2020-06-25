@@ -14,7 +14,10 @@ export class AddCampainModal extends Component {
             campainNameError: null,
             navicateToCampain: false
         }
+
+        this.context = null
     }
+
     onClickAddCampain = () => {
         console.log(this.context)
 
@@ -39,7 +42,8 @@ export class AddCampainModal extends Component {
             if(data.status === 'success') {
                 $('#modal-add-application-campaign').modal('hide')
                 this.addCampainToContext({id: data.campain_id, name: this.state.campainName})
-                //this.setState({navicateToCampain: data.campain_id})
+                console.log(' 1 Modal render')
+                this.setState({navicateToCampain: data.campain_id})
             } else {
 
             }
@@ -75,11 +79,18 @@ export class AddCampainModal extends Component {
     }
 
     render() {
-        // if (this.state.navicateToCampain !== false) {
-        //     return <Redirect to={`/campain/${this.state.navicateToCampain}`} />
-        // }
+        if (this.state.navicateToCampain !== false) {
+            return <Redirect to={`/campain/${this.state.navicateToCampain}`} />
+        }
         return (
             <div className="modal fade" id="modal-add-application-campaign" style={{display: 'none'}} aria-hidden="true">
+                <CampainContext.Consumer>
+                {
+                    value => {
+                        this.context = value
+                    }
+                }
+                </CampainContext.Consumer>
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -118,7 +129,5 @@ export class AddCampainModal extends Component {
         )
     }
 }
-
-AddCampainModal.contextType = CampainContext
 
 export default AddCampainModal

@@ -6,6 +6,9 @@ export default class Header extends Component {
     }
 
     render() {
+
+        console.log('header render')
+
         if(this.props.history.location.pathname == '/login' || this.props.history.location.pathname == '/register') {
             return null
         } 

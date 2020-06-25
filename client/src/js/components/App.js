@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import CampainPage from './campaignPage/CampainPage'
 import LoginPage from './loginPage/LoginPage'
 import RegisterPage from './registerPage/RegisterPage'
-import {CampainContext} from './CampainsContext'
+import {CampainContextProvider} from './CampainsContext'
 import ErrorPage from './errorPage/ErrorPage'
 import ApplicationPage from './applicationPage/ApplicationPage'
 import { ProtectedRoute } from './protected.routes'
@@ -15,14 +15,7 @@ import Menu from './menu/Menu'
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      campains: [],
-      replaceCampains: this.replaceCampains
-    }
-  }
-
-  replaceCampains = (_campains) => {
-    this.setState({ campains: _campains })
+    
   }
 
   render() {
@@ -41,11 +34,14 @@ export default class App extends Component {
         </Switch>
       </div>
     )
+
+    console.log('App render')
+
     return (
         <Switch>
-          <CampainContext.Provider value={this.state}>
+          <CampainContextProvider>
             <App/>
-          </CampainContext.Provider>
+          </CampainContextProvider>
         </Switch>
     )
   }

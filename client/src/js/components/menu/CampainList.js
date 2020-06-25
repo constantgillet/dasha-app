@@ -9,10 +9,17 @@ export class CampainList extends Component {
     }
 
     componentDidMount() {
+        this.setTreeview()
+    }
+
+    componentDidUpdate() {
+        this.setTreeview()
+    }
+
+    setTreeview() {
         const trees = $('[data-widget="treeview"]')
         trees.Treeview('init') 
     }
-
     
     render() {
         return (
