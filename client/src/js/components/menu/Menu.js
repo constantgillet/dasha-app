@@ -13,7 +13,10 @@ export default class Menu extends Component {
     render() {
         if(this.props.history.location.pathname == '/login' || this.props.history.location.pathname == '/register') {
             return null
-        } 
+        }
+
+        console.log('Menu render')
+
         return (
             <aside className="main-sidebar sidebar-dark-primary elevation-4">
                 {/* Brand Logo */}

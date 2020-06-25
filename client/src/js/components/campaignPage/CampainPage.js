@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-import Header from '../Header'
-import Menu from '../menu/Menu'
-import Footer from '../Footer'
 import CampainContentHeader from './CampainContentHeader'
 import AddApplicationModal from './AddApplicationModal'
 import AddCampainModal from '../AddCampainModal'
@@ -92,7 +89,6 @@ export class CampainPage extends Component {
                     </section>
 
                 </div>
-                <Footer/>
             </div>
         )
     }

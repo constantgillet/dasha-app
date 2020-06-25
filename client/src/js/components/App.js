@@ -11,6 +11,7 @@ import { ProtectedRoute } from './protected.routes'
 
 import Header from './Header'
 import Menu from './menu/Menu'
+import Footer from './Footer'
 
 export default class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ export default class App extends Component {
           <ProtectedRoute path='/application/:id' component={ApplicationPage}/>
           <Route component={ErrorPage} />
         </Switch>
+        <Route component = {Footer} />
       </div>
     )
 

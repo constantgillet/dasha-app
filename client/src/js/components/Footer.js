@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 
 export default class Footer extends Component {
     render() {
+        if(this.props.history.location.pathname == '/login' || this.props.history.location.pathname == '/register') {
+            return null
+        }
+
         console.log('Footer render')
+        
         return (
             <div>
                 {/* /.content-wrapper */}

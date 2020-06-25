@@ -81,7 +81,6 @@ export class ApplicationPage extends Component {
                     </section>
 
                 </div>
-                <Footer/>
             </div>
         )
     }
