@@ -13,6 +13,7 @@ export class CampainList extends Component {
     }
 
     componentDidUpdate() {
+        console.log('campain list  did update')
         this.setTreeview()
     }
 

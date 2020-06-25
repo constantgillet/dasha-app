@@ -44,6 +44,7 @@ export class AddCampainModal extends Component {
                 this.addCampainToContext({id: data.campain_id, name: this.state.campainName})
                 console.log(' 1 Modal render')
                 this.setState({navicateToCampain: data.campain_id})
+                this.setState({navicateToCampain: false, campainName: '', campainNameError: null,})
             } else {
 
             }
@@ -79,9 +80,13 @@ export class AddCampainModal extends Component {
     }
 
     render() {
+
         if (this.state.navicateToCampain !== false) {
             return <Redirect to={`/campain/${this.state.navicateToCampain}`} />
         }
+
+        console.log('campain modal render')
+
         return (
             <div className="modal fade" id="modal-add-application-campaign" style={{display: 'none'}} aria-hidden="true">
                 <CampainContext.Consumer>
