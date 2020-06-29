@@ -13,7 +13,12 @@
         $database = new Database();
         $db = $database->getConnection();
 
-        $number_of_rows = $db->query("SELECT COUNT(email) FROM users WHERE email = '$email'")->fetchColumn();
+        $query = "SELECT id FROM users WHERE email = :email";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $number_of_rows = $stmt->fetchColumn();
 
         if($number_of_rows > 0) {
             return true;
@@ -22,10 +27,6 @@
         }
     }
 
-    function insert_new_user($full_name, $email, $password) {
-        
-    }
-    
     //Function to check a token
     function is_valid_token($token) {
         global $secret_key;

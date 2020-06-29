@@ -16,8 +16,8 @@ export class LoginPage extends Component {
                 isSending: false
             }
     }
+
     componentDidMount() {
-        //console.log(this.context)
         document.title = 'Se connecter'
     }
 

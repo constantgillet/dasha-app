@@ -13,12 +13,6 @@
      $database = new Database();
      $db = $database->getConnection();
 
-    $application = new Application($db);
-    $application->id = 71;
-    $application->get_informations_from_id();
-    
-
-    echo '<pre>';
-    print_r($application);
-    echo '</pre>';
-    
+     echo '<pre>';
+     print_r(is_email_already_used('rider.constant@gmail.com'));
+     echo '</pre>';
