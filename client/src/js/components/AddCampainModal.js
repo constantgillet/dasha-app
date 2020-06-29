@@ -12,7 +12,8 @@ export class AddCampainModal extends Component {
         this.state = {
             campainName: '',
             campainNameError: null,
-            navicateToCampain: false
+            navicateToCampain: false,
+            isSending: false
         }
         this.context = null
     }
@@ -20,15 +21,14 @@ export class AddCampainModal extends Component {
     onClickAddCampain = () => {
         console.log(this.context)
 
-        if(this.state.campainNameError == null) {
-            toastr.success('Félicitations! Vous avez ajouté une campagne')
+        if(this.state.campainNameError == null && this.state.isSending == false) {
+            this.setState({isSending: true })
             this.addCampain()
-        } else {
-            toastr.warning(`Erreur! ${this.state.campainNameError}`)
         }
     }
 
     addCampain = () => {
+
         const requestOptions = {
             method: 'POST',
             body: JSON.stringify({ token: Profile.token, campainName: this.state.campainName })
@@ -39,11 +39,16 @@ export class AddCampainModal extends Component {
         .then(data => {
             console.log(data)
             if(data.status === 'success') {
+
+                toastr.success('Vous avez ajouté une campagne')
+
+                this.setState({isSending: false })
+
                 $('#modal-add-application-campaign').modal('hide')
                 this.addCampainToContext({id: data.campain_id, name: this.state.campainName})
                 console.log(' 1 Modal render')
                 this.setState({navicateToCampain: data.campain_id})
-                this.setState({navicateToCampain: false, campainName: '', campainNameError: null,})
+                this.setState({navicateToCampain: false, campainName: '', campainNameError: null})
             } else {
 
             }
@@ -98,12 +103,12 @@ export class AddCampainModal extends Component {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h4 className="modal-title">Ajouter une campagne</h4>
-                            {
-                                this.props.allowClosing == undefined || this.props.allowClosing == true && (
+                            {  
+                                this.props.allowClosing === undefined || this.props.allowClosing === true ? (
                                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button> 
-                                )
+                                ) : ( null )
                             }
                             
                         </div>
@@ -126,8 +131,8 @@ export class AddCampainModal extends Component {
                             </div>
                         </div>
                         <div className="modal-footer justify-content-between">   
-                            { this.props.allowClosing == undefined || this.props.allowClosing == true && ( <button type="button" className="btn btn-default" data-dismiss="modal">Annuler</button> ) }
-                            <button type="button" className="btn btn-primary" onClick={this.onClickAddCampain}>Ajouter</button>
+                            { this.props.allowClosing == undefined || this.props.allowClosing == true ? ( <button type="button" className="btn btn-default" data-dismiss="modal">Annuler</button> ) : ( null ) }
+                            <button type="button" className="btn btn-primary" onClick={this.onClickAddCampain}>{ this.state.isSending == true && (<i className="fa fa-spinner fa-spin mr-2" />) } Ajouter</button>
                         </div>
                     </div>
                     {/* /.modal-content */}
