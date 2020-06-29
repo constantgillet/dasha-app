@@ -12,7 +12,8 @@ export class LoginPage extends Component {
                 password: '',
                 emailError: null,
                 passwordError: null,
-                errorMessage: null
+                errorMessage: null,
+                isSending: false
             }
     }
     componentDidMount() {
@@ -21,34 +22,61 @@ export class LoginPage extends Component {
     }
 
     onChangeEmail = (_event) => {
+
         const emailValue = _event.target.value
         this.setState({email: emailValue})
+
+        const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+        if(regex.test(emailValue)){
+            this.setState({ emailError: null })
+        } else {
+            this.setState({ emailError: 'Votre email nest pas valide' })
+        } 
+
     }
 
     onChangePassword = (_event) => {
         const passwordValue = _event.target.value
         this.setState({password: passwordValue})
+
+        if(passwordValue.length > 5){
+            this.setState({ passwordError: null })
+        } else {
+            this.setState({ passwordError: 'Votre mot de passe est trop court.' })
+        }
     }
 
     onLoginButonClick = () => {
-        Auth.login(this.state.email, this.state.password,
 
-            //Success Callback
-            (_campainList) => {
+        if(this.state.emailError == null && this.state.passwordError == null && this.state.isSending == false) {
 
-                if(_campainList.length > 0) {
-                    this.updateCampain(_campainList)
-                    this.props.history.push(`/campain/${_campainList[0].id}`) 
-                } else {
-                    $("#modal-add-application-campaign").modal('show')
-                }
-            },
+            this.setState({isSending: true})
 
-            //Error Callback
-            (_errorMessage) => {
-                this.setState({errorMessage: _errorMessage})
-            },
-        )
+            Auth.login(this.state.email, this.state.password,
+
+                //Success Callback
+                (_campainList) => {
+
+                    this.setState({isSending: false})
+
+                    if(_campainList.length > 0) {
+                        this.updateCampain(_campainList)
+                        this.props.history.push(`/campain/${_campainList[0].id}`) 
+                    } else {
+                        $("#modal-add-application-campaign").modal('show')
+                    }
+                },
+
+                //Error Callback
+                (_errorMessage) => {
+
+                    this.setState({isSending: false})
+
+                    this.setState({errorMessage: _errorMessage})
+                },
+            )
+        }
     }
     updateCampain = (campainList) => {
         this.context.replaceCampains(campainList)
@@ -68,7 +96,8 @@ export class LoginPage extends Component {
                         <p className="login-box-msg">Se connecter pour accéder à l'outils</p>
                         <form action="../../index3.html" method="post">
                             <div className="input-group mb-3">
-                            <input type="email" className="form-control" value={this.state.email} placeholder="Email" onChange={this.onChangeEmail} />
+                            <input type="email" className={`form-control ${this.state.emailError != null ? "is-invalid" : this.state.email.length > 4 ? "is-valid" : ""}`}
+                                value={this.state.email} placeholder="Email" onChange={this.onChangeEmail} />
                             <div className="input-group-append">
                                 <div className="input-group-text">
                                 <span className="fas fa-envelope" />
@@ -76,7 +105,8 @@ export class LoginPage extends Component {
                             </div>
                             </div>
                             <div className="input-group mb-3">
-                            <input type="password" className="form-control" value={this.state.password} placeholder="Mot de passe" onChange={this.onChangePassword} />
+                            <input type="password" className={`form-control ${this.state.passwordError != null ? "is-invalid" : this.state.password.length > 4 ? "is-valid" : ""}`}
+                                value={this.state.password} placeholder="Mot de passe" onChange={this.onChangePassword} />
                             <div className="input-group-append">
                                 <div className="input-group-text">
                                 <span className="fas fa-lock" />
