@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Auth from '../Auth'
 import { CampainContext } from '../CampainsContext'
 import { Link } from 'react-router-dom'
+import AddCampainModal from '../AddCampainModal'
 
 export class LoginPage extends Component {
     constructor(props) {
@@ -31,12 +32,18 @@ export class LoginPage extends Component {
 
     onLoginButonClick = () => {
         Auth.login(this.state.email, this.state.password,
+
             //Success Callback
             (_campainList) => {
-                console.log(_campainList[0])
-                this.updateCampain(_campainList)
-                this.props.history.push(`/campain/${_campainList[0].id}`)
+
+                if(_campainList.length > 0) {
+                    this.updateCampain(_campainList)
+                    this.props.history.push(`/campain/${_campainList[0].id}`) 
+                } else {
+                    $("#modal-add-application-campaign").modal('show')
+                }
             },
+
             //Error Callback
             (_errorMessage) => {
                 this.setState({errorMessage: _errorMessage})
@@ -50,6 +57,7 @@ export class LoginPage extends Component {
     render() {
         return (
             <div className="hold-transition login-page">
+                <AddCampainModal/>
                 <div className="login-box">
                     <div className="login-logo">
                         <img src="/dist/img/AdminLTELogo.png" alt="Dasha Logotype" className="brand-image-login"/>
