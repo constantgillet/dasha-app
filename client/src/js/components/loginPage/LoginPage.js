@@ -57,7 +57,7 @@ export class LoginPage extends Component {
     render() {
         return (
             <div className="hold-transition login-page">
-                <AddCampainModal/>
+                <AddCampainModal allowClosing={false}/>
                 <div className="login-box">
                     <div className="login-logo">
                         <img src="/dist/img/AdminLTELogo.png" alt="Dasha Logotype" className="brand-image-login"/>

@@ -14,7 +14,6 @@ export class AddCampainModal extends Component {
             campainNameError: null,
             navicateToCampain: false
         }
-
         this.context = null
     }
 
@@ -86,7 +85,6 @@ export class AddCampainModal extends Component {
         }
 
         console.log('campain modal render')
-
         return (
             <div className="modal fade" id="modal-add-application-campaign" style={{display: 'none'}} aria-hidden="true">
                 <CampainContext.Consumer>
@@ -100,9 +98,14 @@ export class AddCampainModal extends Component {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h4 className="modal-title">Ajouter une campagne</h4>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
+                            {
+                                this.props.allowClosing == undefined || this.props.allowClosing == true && (
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button> 
+                                )
+                            }
+                            
                         </div>
                         <div className="modal-body">
                             <p>Comment souhaite tu appeler cette campagne ?</p>
@@ -122,8 +125,8 @@ export class AddCampainModal extends Component {
                                 }
                             </div>
                         </div>
-                        <div className="modal-footer justify-content-between">
-                            <button type="button" className="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <div className="modal-footer justify-content-between">   
+                            { this.props.allowClosing == undefined || this.props.allowClosing == true && ( <button type="button" className="btn btn-default" data-dismiss="modal">Annuler</button> ) }
                             <button type="button" className="btn btn-primary" onClick={this.onClickAddCampain}>Ajouter</button>
                         </div>
                     </div>

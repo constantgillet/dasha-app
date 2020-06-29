@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Auth from '../Auth'
 import { PROXY_URL } from '../../../config'
+import AddCampainModal from '../AddCampainModal'
+
 
 export class RegisterPage extends Component {
 
@@ -106,20 +108,22 @@ export class RegisterPage extends Component {
 
     login = () => {
         Auth.login(this.state.email, this.state.password,
+
             //Success Callback
-            () => {
-                this.props.history.push('/')
+            (_campainList) => {
+                $("#modal-add-application-campaign").modal('show')
             },
             //Error Callback
-            () => {
-                this.props.history.push('/login')
-            }
+            (_errorMessage) => {
+                //this.setState({errorMessage: _errorMessage})
+            },
         )
     }
 
     render() {
         return (
             <div className="hold-transition register-page">
+                <AddCampainModal allowClosing={false}/>
                 <div className="register-box">
                     <div className="register-logo">
                         <img src="/dist/img/AdminLTELogo.png" alt="Dasha Logotype" className="brand-image-login"/>
