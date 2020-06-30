@@ -7,14 +7,14 @@ import AddCampainModal from '../AddCampainModal'
 export class LoginPage extends Component {
     constructor(props) {
         super(props)
-            this.state = {
-                email: '',
-                password: '',
-                emailError: null,
-                passwordError: null,
-                errorMessage: null,
-                isSending: false
-            }
+        this.state = {
+            email: '',
+            password: '',
+            emailError: null,
+            passwordError: null,
+            errorMessage: null,
+            isSending: false
+        }
     }
 
     componentDidMount() {

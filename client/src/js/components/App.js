@@ -5,7 +5,7 @@ import CampainPage from './campaignPage/CampainPage'
 import LoginPage from './loginPage/LoginPage'
 import RegisterPage from './registerPage/RegisterPage'
 import {CampainContextProvider} from './CampainsContext'
-import ErrorPage from './errorPage/ErrorPage'
+import Error404Page from './errorPage/Error404Page'
 import ApplicationPage from './applicationPage/ApplicationPage'
 import { ProtectedRoute } from './protected.routes'
 
@@ -16,7 +16,6 @@ import Footer from './Footer'
 export default class App extends Component {
   constructor(props) {
     super(props)
-    
   }
 
   render() {
@@ -31,7 +30,7 @@ export default class App extends Component {
           <Route exact path='/register' component={RegisterPage}/>
           <ProtectedRoute path='/campain/:id' component={CampainPage}/>
           <ProtectedRoute path='/application/:id' component={ApplicationPage}/>
-          <Route component={ErrorPage} />
+          <Route component={Error404Page} />
         </Switch>
         <Route component = {Footer} />
       </div>
