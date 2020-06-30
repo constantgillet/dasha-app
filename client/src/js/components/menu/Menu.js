@@ -3,6 +3,8 @@ import Profile from '../Profile'
 import {CampainContext} from '../CampainsContext'
 import CampainList from './CampainList'
 import { Link } from 'react-router-dom'
+import toastr from 'toastr'
+
 export default class Menu extends Component {
 
     constructor(props) {
@@ -10,6 +12,11 @@ export default class Menu extends Component {
 
     }
     
+    onClickContacts = (_event) => {
+        _event.preventDefault()
+        toastr.info('Cette fonctionnalité est encore en développement !')
+    }
+
     render() {
         if(this.props.history.location.pathname == '/login' || this.props.history.location.pathname == '/register') {
             return null
@@ -89,7 +96,7 @@ export default class Menu extends Component {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/" className="nav-link">
+                            <Link to="/" className="nav-link" onClick={this.onClickContacts}>
                                 <i className="nav-icon far fa-address-book" />
                                 <p>
                                     Liste des Contacts
