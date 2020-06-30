@@ -12,6 +12,7 @@ import { ProtectedRoute } from './protected.routes'
 import Header from './Header'
 import Menu from './menu/Menu'
 import Footer from './Footer'
+import ProfilePage from './profilePage/ProfilePage'
 
 export default class App extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ export default class App extends Component {
           <ProtectedRoute exact path='/' component={CampainPage}/>
           <Route exact path='/login' component={LoginPage}/>
           <Route exact path='/register' component={RegisterPage}/>
+          <ProtectedRoute path='/profile' component={ProfilePage}/>
           <ProtectedRoute path='/campain/:id' component={CampainPage}/>
           <ProtectedRoute path='/application/:id' component={ApplicationPage}/>
           <Route component={Error404Page} />

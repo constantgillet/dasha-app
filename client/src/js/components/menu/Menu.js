@@ -39,7 +39,7 @@ export default class Menu extends Component {
                         <img src="/dist/img/avatar.png" className="img-circle" alt="User" />
                     </div>
                     <div className="info">
-                        <Link to="/" className="d-block">{ Profile.fullName != null ? (Profile.fullName) : ("Nom prénom") }</Link>
+                        <Link to="/profile" className="d-block">{ Profile.fullName != null ? (Profile.fullName) : ("Nom prénom") }</Link>
                     </div>
                     </div>
                     {/* Sidebar Menu */}

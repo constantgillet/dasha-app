@@ -1,3 +1,5 @@
+import { cssNumber } from "jquery"
+
 class Profile {
     
     constructor() {
@@ -6,6 +8,7 @@ class Profile {
         this.avatarSource = null
         this.token = localStorage.getItem('token')
     }
+
     setFullName = (fullName) => {
         localStorage.setItem('fullName', fullName)
         this.fullName = fullName
@@ -19,6 +22,12 @@ class Profile {
     setToken = (token) => {
         localStorage.setItem('token', token)
         this.token = token
+    }
+
+    destroyProfile = () => {
+        localStorage.removeItem('fullName')
+        localStorage.removeItem('email')
+        localStorage.removeItem('token')
     }
 }
 

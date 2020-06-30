@@ -57,6 +57,7 @@ class Auth {
 
     logout = (callback) => {
         this.authenticated = false
+        Profile.destroyProfile()
         callback()
     }
 
