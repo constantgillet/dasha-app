@@ -28,6 +28,11 @@ class Profile {
         localStorage.removeItem('fullName')
         localStorage.removeItem('email')
         localStorage.removeItem('token')
+        this.token = null
+    }
+
+    removeToken = () => {
+        localStorage.removeItem('token')
     }
 }
 

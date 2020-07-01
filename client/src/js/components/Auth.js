@@ -38,6 +38,35 @@ class Auth {
         .catch(err => console.error("Error:", err))
     }
 
+    //To log if the user has a token
+    tokenLogin = (callbackSuccess, callbackError) => {
+
+        if (Profile.token !== null) {
+        
+            const requestOptions = {
+                method: 'POST',
+                body: JSON.stringify({ token: Profile.token})
+            }
+
+            fetch(`${PROXY_URL}/api/tokenLogin.php`, requestOptions)
+            .then(res => res.json())
+            .then(data => {
+
+                if(data.status === 'success'){
+                    this.authenticated = true
+                    Profile.setEmail(data.email)
+                    Profile.setFullName(data.fullName)
+                    Profile.setToken(data.token)
+                    callbackSuccess(data.campains)
+                } else {
+                    Profile.removeToken()
+                    callbackError(data.status_message)
+                }  
+            })
+            .catch(err => console.error("Error:", err))
+        }
+    }
+
     loginLinkedin = (callback) => {
         console.log(this.popup)
 
@@ -57,8 +86,10 @@ class Auth {
 
     logout = (callback) => {
         this.authenticated = false
+        
         Profile.destroyProfile()
-        callback()
+  
+        callback()       
     }
 
     isAuthenticated() {

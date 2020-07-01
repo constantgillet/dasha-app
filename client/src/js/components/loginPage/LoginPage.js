@@ -15,6 +15,8 @@ export class LoginPage extends Component {
             errorMessage: null,
             isSending: false
         }
+
+        this.tokenLogin()
     }
 
     componentDidMount() {
@@ -80,6 +82,27 @@ export class LoginPage extends Component {
     }
     updateCampain = (campainList) => {
         this.context.replaceCampains(campainList)
+    }
+
+    tokenLogin = () => {
+        Auth.tokenLogin(
+
+            //Success Callback
+            (_campainList) => {
+
+                if(_campainList.length > 0) {
+                    this.updateCampain(_campainList)
+                    this.props.history.push(`/campain/${_campainList[0].id}`) 
+                } else {
+                    $("#modal-add-application-campaign").modal('show')
+                }
+            },
+
+            //Error Callback
+            (_errorMessage) => {
+                this.setState({errorMessage: _errorMessage})
+            },
+        )
     }
 
     render() {
